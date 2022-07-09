@@ -1,6 +1,9 @@
 locals {
   devops = [
-    aws_iam_user.devops_datton.name
+    {
+    "arn": aws_iam_user.devops_datton.arn
+    "name": aws_iam_user.devops_datton.name
+    }
   ]
 }
 
@@ -20,5 +23,5 @@ resource "aws_iam_user" "devops_datton" {
 resource "aws_iam_group_membership" "devops_group_membership" {
   group = aws_iam_group.devops.id
   name  = aws_iam_group.devops.name
-  users = local.devops
+  users = [ for user in local.devops: user.name ]
 }

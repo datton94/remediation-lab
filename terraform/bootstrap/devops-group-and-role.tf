@@ -45,7 +45,7 @@ data "aws_iam_policy_document" "devops-role-allow-assume" {
     principals {
       type = "AWS"
       identifiers = [
-        for user in local.devops : "arn:aws:iam::438723512299:user/${user}"
+        for user in local.devops : "arn:aws:iam::438723512299:user/${user.name}"
       ]
     }
   }
