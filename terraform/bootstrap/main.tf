@@ -48,21 +48,31 @@ data "aws_iam_policy_document" "kms_use" {
 
 resource "aws_s3_bucket" "terraform" {
   bucket              = "terraform-${var.name}"
-  acceleration_status = "Enabled"
-  acl                 = "private"
-
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        kms_master_key_id = aws_kms_key.terraform-bootstrap.arn
-        sse_algorithm     = "aws:kms"
-      }
-    }
-  }
 
   tags = module.labels.tags
 
   depends_on = [aws_kms_key.terraform-bootstrap, aws_kms_alias.terraform-bootstrap]
+}
+
+resource "aws_s3_bucket_acl" "terraform" {
+  bucket = aws_s3_bucket.terraform.bucket
+  acl    = "private"
+}
+
+resource "aws_s3_bucket_accelerate_configuration" "terraform" {
+  bucket = aws_s3_bucket.terraform.bucket
+  status = "Enabled"
+}
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "terraform" {
+  bucket = aws_s3_bucket.terraform.bucket
+
+  rule {
+    apply_server_side_encryption_by_default {
+      kms_master_key_id = aws_kms_key.terraform-bootstrap.arn
+      sse_algorithm     = "aws:kms"
+    }
+  }
 }
 
 resource "aws_s3_bucket_versioning" "versioning" {
