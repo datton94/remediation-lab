@@ -1,0 +1,1 @@
+## Please use SOPS to decrypt terraform.tfstate file if you need to use it
