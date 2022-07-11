@@ -39,8 +39,27 @@ data "aws_iam_policy_document" "kms_use" {
     principals {
       type        = "AWS"
       identifiers = [
-        "arn:aws:iam::438723512299:user/victor",
         aws_iam_role.devops.arn
+        ]
+    }
+  }
+
+  statement {
+    sid       = "Enable Permissions for Spectator"
+    effect    = "Allow"
+    resources = ["*"]
+
+    actions = [
+      "kms:List*",
+      "kms:Get*",
+      "kms:Decrypt",
+      "kms:DescribeKey"
+    ]
+
+    principals {
+      type        = "AWS"
+      identifiers = [
+        aws_iam_user.spectator.arn
         ]
     }
   }

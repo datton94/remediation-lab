@@ -56,12 +56,10 @@ data "aws_iam_policy_document" "devops-role-allow-assume" {
 data "aws_iam_policy_document" "devops-role-policy" {
   statement {
     actions = [
-      "s3:*",
       "*"
     ]
 
     resources = [
-      "arn:aws:s3:::*",
       "*"
     ]
   }

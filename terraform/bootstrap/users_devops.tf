@@ -40,3 +40,4 @@ resource "aws_iam_group_membership" "devops_group_membership" {
   name  = aws_iam_group.devops.name
   users = [ for user in local.devops: user.name ]
 }
+
