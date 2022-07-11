@@ -1,4 +1,4 @@
-output "parcel-perform-interview-vpc" {
+output "dev-remediation-vpc" {
   value = module.network_dev.vpc
 }
 
@@ -6,30 +6,62 @@ output "db-subnet-group" {
   value = module.network_dev.db-subnet-group
 }
 
-output "public-subnet-0" {
+output "dev-public-subnet-0" {
   value = module.network_dev.public-subnet-0
 }
 
-output "public-subnet-1" {
+output "dev-public-subnet-1" {
   value = module.network_dev.public-subnet-1
 }
 
-output "public-subnet-2" {
+output "dev-public-subnet-2" {
   value = module.network_dev.public-subnet-2
 }
 
-output "private-subnet-0" {
+output "dev-private-subnet-0" {
   value = module.network_dev.private-subnet-0
 }
 
-output "private-subnet-1" {
+output "dev-private-subnet-1" {
   value = module.network_dev.private-subnet-1
 }
 
-output "private-subnet-2" {
+output "dev-private-subnet-2" {
   value = module.network_dev.private-subnet-2
 }
 
-output "route-table" {
+output "dev-route-table" {
   value = module.network_dev.route-table
+}
+################## Staging ############
+output "staging-remediation-vpc" {
+  value = module.network_staging.vpc
+}
+
+output "staging-public-subnet-0" {
+  value = module.network_staging.public-subnet-0
+}
+
+output "staging-public-subnet-1" {
+  value = module.network_staging.public-subnet-1
+}
+
+output "staging-public-subnet-2" {
+  value = module.network_staging.public-subnet-2
+}
+
+output "staging-private-subnet-0" {
+  value = module.network_staging.private-subnet-0
+}
+
+output "staging-private-subnet-1" {
+  value = module.network_staging.private-subnet-1
+}
+
+output "staging-private-subnet-2" {
+  value = module.network_staging.private-subnet-2
+}
+
+output "staging-route-table" {
+  value = module.network_staging.route-table
 }

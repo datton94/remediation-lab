@@ -37,6 +37,14 @@ resource "aws_route_table" "public-crt" {
 resource "aws_route_table" "private-crt" {
   vpc_id = aws_vpc.vpc.id
 
+  dynamic "route" {
+    for_each = var.create_private_natgw ? ["create_natgw"] : []
+    content {
+      cidr_block = "0.0.0.0/0"
+      gateway_id = aws_nat_gateway.private-natgw[0].id
+    }
+  }
+
   tags = merge(
     var.tags,
     {
