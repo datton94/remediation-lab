@@ -102,6 +102,7 @@ data "aws_iam_policy_document" "spectator" {
 
     actions = [
       "logs:DescribeLogGroups",
+      "logs:DescribeLogStreams",
       "logs:GetLogEvents",
     ]
   }
