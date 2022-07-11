@@ -2,14 +2,14 @@
 - [Result](#result)
 - [Prerequisites](#prerequisites)
   - [Local tools](#local-tools)
-- [Infrastructure](#Infrastructure)
+- [Infrastructure](#infrastructure)
   - [Why Terraform](#why-terraform)
-  - [Bootstrap]
-  - [Modules]
-  - [Components]
-- [EKS]
-  - [ALB-Ingress]
-  - [ArgoCD]
+  - [Bootstrap](#bootstrap)
+  - [Modules](#modules)
+  - [Components](#components)
+- [EKS](#eks)
+  - [ALB-Ingress](#alb-ingress)
+  - [ArgoCD](#argocd)
 
 ## Result
 ### Achievements from the current setup: 
