@@ -32,7 +32,7 @@
 * `kustomization-4.1.*` (https://github.com/kubernetes-sigs/kustomize/releases/tag/kustomize%2Fv4.1.3)
 * `aws-iam-authenticator` used by `aws-cli` (https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/tag/v0.5.5)
 * `aws-cli` (https://github.com/aws/aws-cli/tags)
-* `terraform` ()
+* `terraform` (https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
 ## Infrastructure
 
