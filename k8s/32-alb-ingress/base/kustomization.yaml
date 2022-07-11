@@ -1,0 +1,6 @@
+resources:
+- crds.yaml
+- bundle.yaml
+
+patches:
+- patching.yaml

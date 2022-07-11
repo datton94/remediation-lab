@@ -1,0 +1,7 @@
+resources:
+- ../base
+
+patches:
+- patching.yaml
+
+namespace: kube-system

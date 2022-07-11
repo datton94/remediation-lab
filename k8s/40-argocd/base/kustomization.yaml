@@ -1,0 +1,6 @@
+resources:
+- bundle.yaml
+
+patches:
+- argocd-ssh-know-hosts.yaml
+- patching.yaml

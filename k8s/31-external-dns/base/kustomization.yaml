@@ -1,0 +1,7 @@
+resources:
+- external-dns-clusterrole.yaml
+- external-dns-clusterrolebinding.yaml
+- external-dns-deployment.yaml
+- external-dns-serviceaccount.yaml
+
+namespace: kube-system

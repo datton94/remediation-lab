@@ -1,0 +1,5 @@
+resources:
+- apps.yaml
+- argocd.yaml
+- cert-manager.yaml
+- metrics.yaml

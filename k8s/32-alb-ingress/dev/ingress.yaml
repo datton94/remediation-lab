@@ -1,0 +1,46 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: alb-ingress
+  namespace: apps
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/load-balancer-name: eks-dev-ingress # Maximum 32 characters
+    alb.ingress.kubernetes.io/scheme: internet-facing 
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80} , {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: 443
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
+    alb.ingress.kubernetes.io/healthcheck-port: traffic-port
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=60
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-southeast-1:438723512299:certificate/bc7c205e-4928-42b9-a403-d3f3240c0cee
+    alb.ingress.kubernetes.io/subnets: 'subnet-067d4cc5f00cd0aaa, subnet-0a9f81bb24cd358b2, subnet-089537054b350b88b'
+    alb.ingress.kubernetes.io/security-groups: 'sg-03fd7c2bfcf798c91, sg-09cc8b6c78fc1dbb3'
+    # Note 
+    # You can enable subnet auto discovery to avoid specify this annotation on every Ingress.
+    # To enable, you need to add these tags to your subnets
+    # kubernetes.io/role/internal-elb                Set to 1 or empty tag value for internal load balancers
+    # kubernetes.io/role/elb                         Set to 1 or empty tag value for internet-facing load balancers
+spec:
+  rules:
+  - host: '2048.revoz.net'
+    http:
+      paths:
+        - backend:
+            service:
+              name: game-2048
+              port: 
+                number: 80
+          path: /
+          pathType: Prefix
+  - host: 'dev-argocd.revoz.net'
+    http:
+      paths:
+        - backend:
+            service:
+              name: argocd-server
+              port: 
+                number: 80
+          path: /
+          pathType: Prefix

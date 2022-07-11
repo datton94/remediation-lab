@@ -1,0 +1,18 @@
+# Source: https://raw.githubusercontent.com/kubernetes-sigs/external-dns/v0.10.1/kustomize/external-dns-clusterrole.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: external-dns
+rules:
+  - apiGroups: ['']
+    resources: ['endpoints', 'pods', 'services']
+    verbs: ['get', 'watch', 'list']
+  - apiGroups: ['extensions']
+    resources: ['ingresses']
+    verbs: ['get', 'watch', 'list']
+  - apiGroups: ["networking.k8s.io"]
+    resources: ["ingresses"]
+    verbs: ["get","watch","list"]
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["watch", "list"]

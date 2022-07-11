@@ -1,0 +1,62 @@
+# Source: https://raw.githubusercontent.com/kubernetes-sigs/external-dns/v0.10.1/kustomize/external-dns-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: external-dns-private
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: external-dns-private
+  template:
+    metadata:
+      labels:
+        app: external-dns-private
+    spec:
+      serviceAccountName: external-dns
+      containers:
+        - name: external-dns
+          image: k8s.gcr.io/external-dns/external-dns:v0.10.1
+          args:
+            - --source=service
+            - --source=ingress
+            - --namespace=kube-system
+            - --annotation-filter=alb.ingress.kubernetes.io/scheme=internal
+            - --domain-filter=external-dns-test.my-org.com # will make ExternalDNS see only the hosted zones matching provided domain, omit to process all available hosted zones
+            - --policy=upsert-only # would prevent ExternalDNS from deleting any records, omit to enable full synchronization
+            - --provider=aws
+            - --aws-zone-type=private
+            - --registry=txt
+            - --txt-owner-id=stage-0001-central-eks
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: external-dns-public
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: external-dns-private
+  template:
+    metadata:
+      labels:
+        app: external-dns-private
+    spec:
+      serviceAccountName: external-dns
+      containers:
+        - name: external-dns
+          image: k8s.gcr.io/external-dns/external-dns:v0.10.1
+          args:
+            - --source=service
+            - --source=ingress
+            - --namespace=kube-system
+            - --annotation-filter=alb.ingress.kubernetes.io/scheme=internet-facing
+            - --domain-filter=external-dns-test.my-org.com # will make ExternalDNS see only the hosted zones matching provided domain, omit to process all available hosted zones
+            - --policy=upsert-only # would prevent ExternalDNS from deleting any records, omit to enable full synchronization
+            - --provider=aws
+            - --aws-zone-type=public
+            - --registry=txt
+            - --txt-owner-id=stage-0001-central-eks

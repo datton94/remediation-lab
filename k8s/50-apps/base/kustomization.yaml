@@ -1,0 +1,4 @@
+resources:
+- 2048.yaml
+
+namespace: apps

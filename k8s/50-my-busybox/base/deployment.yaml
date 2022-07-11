@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-busybox
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-busybox
+  template:
+    metadata:
+      labels:
+        app: nginx-busybox
+    spec:
+      serviceAccountName: aws-load-balancer-controller
+      containers:
+      - image: nginx
+        imagePullPolicy: IfNotPresent
+        name: nginx-busybox
+      restartPolicy: Always

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  
+data:
+  accounts.spectator: login
+  accounts.spectator.enabled: "true"
+
+  url: https://dev-argocd.revoz.net
+  statusbadge.enabled: "true"
+  users.anonymous.enabled: "false"
+  users.session.duration: "24h"
+  ga.trackingid: "UA-12345-1"
+  ga.anonymizeusers: "false"
+  help.chatUrl: "https://mycorp.slack.com/argo-cd" # FIXME
+  help.chatText: "Chat now!"

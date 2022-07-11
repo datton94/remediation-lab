@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/name: aws-load-balancer-controller
+  name: aws-load-balancer-controller
+  namespace: kube-system
+spec:
+  replicas: 1
+  template:
+    spec:
+      nodeSelector:
+        mine/group: default
+      containers:
+      - args:
+        - --cluster-name=eks-dev
+        - --ingress-class=alb
+        name: controller
+        image: amazon/aws-alb-ingress-controller:v2.4.2
+        resources:
+          limits:
+            cpu: 600m
+            memory: 500Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi

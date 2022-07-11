@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: external-dns-public
+spec:
+  template:
+    spec:
+      serviceAccountName: external-dns
+      containers:
+      - name: external-dns
+        image: k8s.gcr.io/external-dns/external-dns:v0.10.1
+        args:
+          - --source=service
+          - --source=ingress
+          - --namespace=apps
+          - --annotation-filter=alb.ingress.kubernetes.io/scheme=internet-facing 
+          - --domain-filter=revoz.net # will make ExternalDNS see only the hosted zones matching provided domain, omit to process all available hosted zones
+          - --policy=upsert-only # would prevent ExternalDNS from deleting any records, omit to enable full synchronization
+          - --provider=aws
+          - --aws-zone-type=public
+          - --registry=txt
+          - --txt-owner-id=eks-dev-public
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: external-dns
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::438723512299:role/irsa-external-dns-remediation-lab-dev
+    eks.amazonaws.com/sts-regional-endpoints: "true"

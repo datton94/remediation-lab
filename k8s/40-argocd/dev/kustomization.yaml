@@ -1,0 +1,14 @@
+resources:
+- ../base
+- argocd-secret.yaml
+- reposecrets.yaml
+
+patches:
+- argocd-cm.yaml
+- argocd-rabc-cm.yaml
+- argocd-cmd-params-cm.yaml
+- argocd-tls-certs-cm.yaml
+- argocd-gpg-keys-cm.yaml
+- patching.yaml
+
+namespace: apps
