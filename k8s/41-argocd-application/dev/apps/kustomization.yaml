@@ -1,2 +1,3 @@
 resources:
 - 2048.yaml
+- external-dns.yaml
