@@ -42,7 +42,7 @@ Terraform is a powerful and convenient tool to provision and manage the infrastr
 ### Bootstrap
 Look at the repo, you will see the terraform/bootstrap directory. It the very first component that need to be inited, create the S3 bucket needed for storing the terraform state, create users, roles and grant the permission for them by policies so I named it `bootstrap`. 
 
-For the first run, you need to comment out these line on provider.tf 
+For the first run, you need to comment out these lines in `provider.tf` 
 ```
 terraform {
   backend "s3" {
@@ -83,8 +83,8 @@ We have 2 modules in `terraform/modules`
 For EKS, I used the official module from Terraform (https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest) to save time
 
 ### Components
-* network: I create 2 VPCs , one for DEV env and one for STAGING. Only DEV VPC will be used in this lab, STAGING just for example that we can create separate VPCs for each environent
-* dev: it for resources belong to Dev environment, include eks, necessary roles and policies for IRSA
+* `network`: I create 2 VPCs , one for DEV env and one for STAGING. Only DEV VPC will be used in this lab, STAGING just for example that we can create separate VPCs for each environent
+* `dev`: it for resources belong to Dev environment, include eks, necessary roles and policies for IRSA
 
 ## EKS
 ### ALB-ingress
