@@ -58,7 +58,7 @@ terraform {
 ```
 Because you didn't have the S3 bucket yet to store the state. Run `terraform init` to let Terraform install the provider, after that run `terraform plan` to review what will be created then run `terraform apply -auto-approve` to let Terraform do its job. Remember, for the first running, make sure you run by root account or the account that have enough permission (don't forget to change the provider profile). 
 
-The terraform state will be located on your local machine, now your new users and role were created, let setup the AWS access key on your local machine. You need to setup profile assuming on your local machine like this
+The terraform state will be located on your local machine, now your new users and role were created, let setup the AWS access key on your local machine. You need to setup profile assuming like this:
 
 `~/.aws/config`
 
@@ -72,7 +72,7 @@ role_arn = arn:aws:iam::438723512299:role/devops-terraform-lab
 source_profile = dattonnt94
 ```
 
-My idea is we will have many devops members use the same Terraform repo, provision cloud resources frequently and we need to have a specific role for Terraform perform.
+My idea is we will have many devops members use the same Terraform repo, provision cloud resources frequently and we need to have a specific role for Terraform performing, all devops members can assume this role.
 
 Let uncomment the lines I mentioned above then run `terraform init`, Terraform will ask you something like "I found new remote backend configuration, do you want to migrate state to remote backend?", say `yes` and go ahead.
 
