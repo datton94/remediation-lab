@@ -16,7 +16,7 @@ spec:
   # Destination cluster and namespace to deploy the application
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: "kube-system"
+    namespace: "cert-manager"
 
   # Sync policy
   syncPolicy:
