@@ -1,15 +1,15 @@
 locals {
   spectators = [
     {
-    "arn": aws_iam_user.spectator.arn
-    "name": aws_iam_user.spectator.name
+      "arn" : aws_iam_user.spectator.arn
+      "name" : aws_iam_user.spectator.name
     },
   ]
 }
 
 ############# SPECTATORS ##############
 
-resource "aws_iam_user" "spectator" { 
+resource "aws_iam_user" "spectator" {
   name          = "spectator"
   force_destroy = true
 
@@ -23,8 +23,8 @@ resource "aws_iam_user" "spectator" {
 data "aws_iam_policy_document" "spectator" {
 
   statement {
-    sid       = "ListAllkmsAlias"
-    effect    = "Allow"
+    sid    = "ListAllkmsAlias"
+    effect = "Allow"
     resources = [
       "*"
       #"arn:aws:kms:ap-southeast-1:438723512299:key/*"
@@ -37,8 +37,8 @@ data "aws_iam_policy_document" "spectator" {
   }
 
   statement {
-    sid       = "Decryptkms"
-    effect    = "Allow"
+    sid    = "Decryptkms"
+    effect = "Allow"
     resources = [
       aws_kms_alias.terraform-bootstrap.arn
     ]
@@ -51,8 +51,8 @@ data "aws_iam_policy_document" "spectator" {
   }
 
   statement {
-    sid       = "ListAllS3buckets"
-    effect    = "Allow"
+    sid    = "ListAllS3buckets"
+    effect = "Allow"
     resources = [
       "arn:aws:s3:::*"
     ]
@@ -61,18 +61,18 @@ data "aws_iam_policy_document" "spectator" {
   }
 
   statement {
-    sid       = "ListS3bucket"
-    effect    = "Allow"
+    sid    = "ListS3bucket"
+    effect = "Allow"
     resources = [
       aws_s3_bucket.terraform.arn
     ]
 
-    actions = ["s3:ListBucket","s3:ListAllMyBuckets"]
+    actions = ["s3:ListBucket", "s3:ListAllMyBuckets"]
   }
 
   statement {
-    sid       = "GetS3objects"
-    effect    = "Allow"
+    sid    = "GetS3objects"
+    effect = "Allow"
     resources = [
       "${aws_s3_bucket.terraform.arn}/*"
     ]
@@ -81,8 +81,8 @@ data "aws_iam_policy_document" "spectator" {
   }
 
   statement {
-    sid       = "ViewEksCluster"
-    effect    = "Allow"
+    sid    = "ViewEksCluster"
+    effect = "Allow"
     resources = [
       "*"
     ]
@@ -94,8 +94,8 @@ data "aws_iam_policy_document" "spectator" {
   }
 
   statement {
-    sid       = "ViewCloudWatch"
-    effect    = "Allow"
+    sid    = "ViewCloudWatch"
+    effect = "Allow"
     resources = [
       "arn:aws:logs:ap-southeast-1:438723512299:log-group:*"
     ]

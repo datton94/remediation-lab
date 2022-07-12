@@ -8,7 +8,7 @@ module "eks" {
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
 
-  enable_irsa = true
+  enable_irsa               = true
   cluster_enabled_log_types = ["audit", "api", "authenticator"]
 
   cluster_addons = {
@@ -26,12 +26,12 @@ module "eks" {
     resources        = ["secrets"]
   }]
 
-  vpc_id     = data.terraform_remote_state.network.outputs.dev-remediation-vpc.id
+  vpc_id = data.terraform_remote_state.network.outputs.dev-remediation-vpc.id
   subnet_ids = [
     data.terraform_remote_state.network.outputs.dev-private-subnet-0.id,
-    data.terraform_remote_state.network.outputs.dev-private-subnet-1.id, 
+    data.terraform_remote_state.network.outputs.dev-private-subnet-1.id,
     data.terraform_remote_state.network.outputs.dev-private-subnet-2.id
-    ]
+  ]
 
 
   node_security_group_additional_rules = {
@@ -82,7 +82,7 @@ module "eks" {
       desired_size = 2
 
       use_mixed_instances_policy = true
-      bootstrap_extra_args = "--kubelet-extra-args '--node-labels=mine/group=default'"
+      bootstrap_extra_args       = "--kubelet-extra-args '--node-labels=mine/group=default'"
       mixed_instances_policy = {
         instances_distribution = {
           on_demand_base_capacity                  = 1

@@ -1,4 +1,4 @@
-name = "eks"
-environment = "dev"
+name         = "eks"
+environment  = "dev"
 project-name = "remediation-lab"
-owner = "datton94"
+owner        = "datton94"

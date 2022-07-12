@@ -1,12 +1,12 @@
 variable "name" {
-  description   = "Resource name."
-  default       = ""
+  description = "Resource name."
+  default     = ""
 }
 
 variable "project" {
   type        = string
   description = "The name of the project"
-  default      = ""
+  default     = ""
 }
 
 variable "environment" {

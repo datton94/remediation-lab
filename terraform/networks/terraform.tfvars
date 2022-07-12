@@ -29,6 +29,6 @@ private-subnet-numbers-staging = {
   2 = "10.1.80.0/20"
 }
 
-name = "network"
+name         = "network"
 project-name = "remediation-lab"
-owner = "datton94"
+owner        = "datton94"

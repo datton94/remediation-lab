@@ -5,8 +5,8 @@ resource "aws_internet_gateway" "igw" {
 }
 
 resource "aws_eip" "default" {
-  count      = var.create_private_natgw ? 1 : 0
-  vpc        = true
+  count = var.create_private_natgw ? 1 : 0
+  vpc   = true
 }
 
 resource "aws_nat_gateway" "private-natgw" {

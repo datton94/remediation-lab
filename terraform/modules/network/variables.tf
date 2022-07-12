@@ -17,8 +17,8 @@ variable "private-subnet-numbers" {
 }
 
 variable "create_private_natgw" {
-  type = bool
-  default = true 
+  type    = bool
+  default = true
 }
 
 variable "vpc-endpoint-s3-enable" {}

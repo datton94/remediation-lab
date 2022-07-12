@@ -24,5 +24,5 @@ output "devops_role_arn" {
 }
 
 output "devops_user_arn" {
-  value = { for user in local.devops: user.name => user.arn }
+  value = { for user in local.devops : user.name => user.arn }
 }

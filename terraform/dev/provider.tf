@@ -21,7 +21,7 @@ provider "kubernetes" {
       "get-token",
       "--cluster-name", #"eks-dev"
       module.eks.cluster_id
-      ]
+    ]
   }
 }
 
@@ -40,19 +40,19 @@ terraform {
 data "terraform_remote_state" "bootstrap" {
   backend = "s3"
   config = {
-    bucket = "terraform-boostrap"
-    key    = "bootstrap.tfstate"
-    profile        = "devops"
-    region = "ap-southeast-1"
+    bucket  = "terraform-boostrap"
+    key     = "bootstrap.tfstate"
+    profile = "devops"
+    region  = "ap-southeast-1"
   }
 }
 
 data "terraform_remote_state" "network" {
   backend = "s3"
   config = {
-    bucket = "terraform-boostrap"
-    key    = "network.tfstate"
-    profile        = "devops"
-    region = "ap-southeast-1"
+    bucket  = "terraform-boostrap"
+    key     = "network.tfstate"
+    profile = "devops"
+    region  = "ap-southeast-1"
   }
 }

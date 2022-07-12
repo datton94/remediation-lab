@@ -16,8 +16,8 @@ module "network_staging" {
 
   vpc-cidr-block = var.vpc-cidr-block-staging
 
-  vpc-endpoint-s3-enable       = false
-  create_private_natgw         = true
+  vpc-endpoint-s3-enable = false
+  create_private_natgw   = true
 
   public-subnet-numbers  = var.public-subnet-numbers-staging
   private-subnet-numbers = var.private-subnet-numbers-staging

@@ -37,10 +37,10 @@ data "aws_iam_policy_document" "kms_use" {
     actions = ["kms:*"]
 
     principals {
-      type        = "AWS"
+      type = "AWS"
       identifiers = [
         aws_iam_role.devops.arn
-        ]
+      ]
     }
   }
 
@@ -57,16 +57,16 @@ data "aws_iam_policy_document" "kms_use" {
     ]
 
     principals {
-      type        = "AWS"
+      type = "AWS"
       identifiers = [
         aws_iam_user.spectator.arn
-        ]
+      ]
     }
   }
 }
 
 resource "aws_s3_bucket" "terraform" {
-  bucket              = "terraform-${var.name}"
+  bucket = "terraform-${var.name}"
 
   tags = module.labels.tags
 

@@ -23,10 +23,10 @@ data "aws_iam_policy_document" "eks_dev_kms_use" {
     actions = ["kms:*"]
 
     principals {
-      type        = "AWS"
+      type = "AWS"
       identifiers = [
         aws_iam_role.devops.arn
-        ]
+      ]
     }
   }
 }
