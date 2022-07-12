@@ -94,4 +94,9 @@ Actually, its AWS Load Balancer Controller (https://kubernetes-sigs.github.io/aw
 * Official homepage: https://argo-cd.readthedocs.io/en/stable/
 ArgoCD is a powerful, lightweight, and fast CD tool for kubernetes. It helps us follow the GitOps(https://www.gitops.tech/) with kubernetes easily. It can track the changes of the k8s manifest. You can access https://dev-argocd.revoz.net to see the UI, the read-only account login information will be sent later. 
 
+#### Alternative ArgoCD: 
+- FluxCD v2
+- Spinnaker
+- Gitlab CD
+
 I owned the `revoz.net` domain in my AWS account.
