@@ -1,3 +1,5 @@
 resources:
 - 2048.yaml
+- cert-manager.yaml
 - external-dns.yaml
+- metrics-server.yaml
