@@ -40,7 +40,7 @@
 Terraform is a powerful and convenient tool to provision and manage the infrastructure. It supports many cloud providers and is easy to use. And I prefer to use the declarative style of Terraform.
 
 ### Bootstrap
-Look at the repo, you will see the terraform/bootstrap directory. It the very first component that need to be inited, create the S3 bucket needed for storing the terraform state, create users, roles and grant the permission for them by policies so I named it `bootstrap`. 
+Look at the repo, you will see the `terraform/bootstrap` directory. It the very first component that need to be inited, create the S3 bucket needed for storing the terraform state, create users, roles and grant the permission for them by policies so I named it `bootstrap`. 
 
 For the first run, you need to comment out these lines in `provider.tf` 
 ```
