@@ -78,8 +78,8 @@ module "eks" {
   self_managed_node_groups = {
     one = {
       name         = "mixed-1"
-      max_size     = 5
-      desired_size = 2
+      max_size     = 1
+      desired_size = 1
 
       use_mixed_instances_policy = true
       bootstrap_extra_args       = "--kubelet-extra-args '--node-labels=mine/group=default'"
